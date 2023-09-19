@@ -13,9 +13,9 @@ export default function MainNav({ data }: MainNavProps) {
   const pathName = usePathname()
 
   const routes = data.map((route) => ({
-    href: `/category/${route.id}`,
+    href: `/categories/${route.id}`,
     label: route.name,
-    active: pathName === `/category/${route.id}`,
+    active: pathName === `/categories/${route.id}`,
   }))
 
   return (

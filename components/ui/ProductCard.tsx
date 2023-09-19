@@ -2,19 +2,30 @@
 
 import Image from 'next/image'
 
-import { Product } from '@/types'
+import type { Product } from '@/types'
 import IconButton from '@/components/ui/IconButton'
 import { Expand, ShoppingCart } from 'lucide-react'
 import Currency from '@/components/ui/Currency'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import type { MouseEventHandler } from 'react'
+import PreviewModal from '../PreviewModal'
+import usePreviewModal from '@/hooks/usePreviewModal'
 
 type ProductCardProps = {
   data: Product
 }
 
 export default function ProductCard({ data }: ProductCardProps) {
+  const previewModal = usePreviewModal()
   const router = useRouter()
+
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (e) => {
+    // Prevent Link navigation
+    e.preventDefault()
+
+    previewModal.onOpen(data)
+  }
 
   // TODO: poista
   const handleClick = () => {
@@ -23,6 +34,7 @@ export default function ProductCard({ data }: ProductCardProps) {
   return (
     <Link
       href={`/products/${data?.id}`}
+      // onClick={handleClick}
       className='bg-white group cursor-pointer rounded-xl border p-3 space-y-4'
     >
       <div className='aspect-square rounded-xl bg-gray-100 relative'>
@@ -35,7 +47,7 @@ export default function ProductCard({ data }: ProductCardProps) {
         <div className='opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5'>
           <div className='flex gap-x-6 justify-center'>
             <IconButton
-              onClick={() => {}}
+              onClick={onPreview}
               icon={<Expand size={20} className='text-gray-600' />}
             />
             <IconButton
