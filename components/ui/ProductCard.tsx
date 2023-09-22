@@ -11,20 +11,27 @@ import Link from 'next/link'
 import type { MouseEventHandler } from 'react'
 import PreviewModal from '../PreviewModal'
 import usePreviewModal from '@/hooks/usePreviewModal'
+import useCart from '@/hooks/useCart'
 
 type ProductCardProps = {
   data: Product
 }
 
 export default function ProductCard({ data }: ProductCardProps) {
+  const cart = useCart()
   const previewModal = usePreviewModal()
   const router = useRouter()
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (e) => {
     // Prevent Link navigation
     e.preventDefault()
-
     previewModal.onOpen(data)
+  }
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    // Prevent Link navigation
+    e.preventDefault()
+    cart.addItem(data)
   }
 
   // TODO: poista
@@ -51,7 +58,7 @@ export default function ProductCard({ data }: ProductCardProps) {
               icon={<Expand size={20} className='text-gray-600' />}
             />
             <IconButton
-              onClick={() => {}}
+              onClick={onAddToCart}
               icon={<ShoppingCart size={20} className='text-gray-600' />}
             />
           </div>
