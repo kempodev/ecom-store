@@ -1,5 +1,3 @@
-import { SizeLimit } from 'next'
-
 export type Billboard = {
   id: string
   label: string
