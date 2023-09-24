@@ -1,16 +1,27 @@
 'use client'
 
+import type { MouseEventHandler } from 'react'
 import { ShoppingCart } from 'lucide-react'
 
-import { Product } from '@/types'
+import type { Product } from '@/types'
 import Currency from '@/components/ui/Currency'
 import Button from '@/components/ui/Button'
+import useCart from '@/hooks/useCart'
+import usePreviewModal from '@/hooks/usePreviewModal'
 
 type InfoProps = {
   data: Product
 }
 
 export default function Info({ data }: InfoProps) {
+  const cart = useCart()
+  const previewModal = usePreviewModal()
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    cart.addItem(data)
+    previewModal.onClose()
+  }
+
   return (
     <div>
       <h1 className='text-3xl font-bold text-gray-900'>{data.name}</h1>
@@ -34,7 +45,7 @@ export default function Info({ data }: InfoProps) {
         </div>
       </div>
       <div className='mt-10 flex items-center gap-x-3'>
-        <Button className='flex items-center gap-x-2'>
+        <Button onClick={onAddToCart} className='flex items-center gap-x-2'>
           Add To Cart
           <ShoppingCart />
         </Button>

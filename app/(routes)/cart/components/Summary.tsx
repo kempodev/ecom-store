@@ -33,7 +33,7 @@ export default function Summary() {
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
         productIds: items.map((item) => item.id),
-      }
+      },
     )
 
     window.location = res.data.url
@@ -48,7 +48,11 @@ export default function Summary() {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button onClick={handleCheckout} className='w-full mt-6'>
+      <Button
+        disabled={items.length < 1}
+        onClick={handleCheckout}
+        className='w-full mt-6'
+      >
         Checkout
       </Button>
     </div>

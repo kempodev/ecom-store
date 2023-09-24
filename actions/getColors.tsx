@@ -1,4 +1,4 @@
-import { Color } from '@/types'
+import type { Color } from '@/types'
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/colors`
 
