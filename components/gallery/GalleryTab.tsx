@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import { Tab } from '@headlessui/react'
 import Image from 'next/image'
 
-import { Image as ImageType } from '@/types'
+import type { Image as ImageType } from '@/types'
 
 type GalleryTabProps = {
   image: ImageType
@@ -24,7 +24,7 @@ export default function GalleryTab({ image }: GalleryTabProps) {
           <span
             className={cn(
               'absolute inset-0 rounded-md ring-2 ring-offset-2',
-              selected ? 'ring-black' : 'ring-transparent'
+              selected ? 'ring-black' : 'ring-transparent',
             )}
           />
         </div>

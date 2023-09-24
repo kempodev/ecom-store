@@ -1,4 +1,4 @@
-import { Billboard as BillboardType } from '@/types'
+import type { Billboard as BillboardType } from '@/types'
 
 type BillboardProps = {
   data: BillboardType

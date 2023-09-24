@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { ShoppingBag } from 'lucide-react'
 
 import useCart from '@/hooks/useCart'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 export default function NavbarActions() {

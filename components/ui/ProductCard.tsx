@@ -6,10 +6,8 @@ import type { Product } from '@/types'
 import IconButton from '@/components/ui/IconButton'
 import { Expand, ShoppingCart } from 'lucide-react'
 import Currency from '@/components/ui/Currency'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import type { MouseEventHandler } from 'react'
-import PreviewModal from '../PreviewModal'
 import usePreviewModal from '@/hooks/usePreviewModal'
 import useCart from '@/hooks/useCart'
 
@@ -20,7 +18,6 @@ type ProductCardProps = {
 export default function ProductCard({ data }: ProductCardProps) {
   const cart = useCart()
   const previewModal = usePreviewModal()
-  const router = useRouter()
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (e) => {
     // Prevent Link navigation
@@ -35,9 +32,9 @@ export default function ProductCard({ data }: ProductCardProps) {
   }
 
   // TODO: poista
-  const handleClick = () => {
-    router.push(`/products/${data?.id}`)
-  }
+  // const handleClick = () => {
+  //   router.push(`/products/${data?.id}`)
+  // }
   return (
     <Link
       href={`/products/${data?.id}`}

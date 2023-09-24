@@ -17,7 +17,7 @@ export default function Info({ data }: InfoProps) {
   const cart = useCart()
   const previewModal = usePreviewModal()
 
-  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = () => {
     cart.addItem(data)
     previewModal.onClose()
   }
