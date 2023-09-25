@@ -6,12 +6,18 @@ import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import ModalProvider from '@/providers/ModalProvider'
 import ToastProvider from '@/providers/ToastProvider'
+import getStore from '@/actions/getStore'
 
 const font = Urbanist({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'Kempo Store',
-  description: 'Kempo Store',
+export async function generateMetadata(): Promise<Metadata> {
+  // fetch data
+  const store = await getStore()
+
+  return {
+    title: store.name,
+    description: store.name,
+  }
 }
 
 export default function RootLayout({
@@ -31,4 +37,3 @@ export default function RootLayout({
     </html>
   )
 }
-

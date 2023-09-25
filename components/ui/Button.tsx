@@ -13,15 +13,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled}
         ref={ref}
         className={cn(
-          'w-auto rounded-full bg-black border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 text-white font-semibold hover:opacity-75 transition',
-          className,
+          'w-auto rounded-full border-transparent bg-black px-5 py-3 font-semibold text-white transition hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50',
+          className
         )}
         {...props}
       >
         {children}
       </button>
     )
-  },
+  }
 )
 
 Button.displayName = 'Button'

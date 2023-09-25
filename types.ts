@@ -37,3 +37,9 @@ export type Color = {
   name: string
   value: string
 }
+
+export type Store = {
+  id: string
+  name: string
+  userId: string
+}
