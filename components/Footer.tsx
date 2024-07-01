@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className='border-t bg-white'>
       <div className='mx-auto py-10'>
         <p className='text-center text-xs text-black'>
-          &copy; 2023 Kempo. All rights reserved.
+          &copy; 2024 Kempo. All rights reserved.
         </p>
       </div>
     </footer>
