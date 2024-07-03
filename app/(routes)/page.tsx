@@ -1,19 +1,21 @@
 import Container from '@/components/ui/Container'
-import getBillboard from '@/actions/getBillboard'
 import Billboard from '@/components/Billboard'
 import getProducts from '@/actions/getProducts'
 import ProductList from '@/components/ProductList'
+import getBillboards from '@/actions/getBillboards'
 
 export const revalidate = 0
 
+// TODO: add carousel instead of billboard
+
 export default async function HomePage() {
   const products = await getProducts({ isFeatured: true })
-  const billboard = await getBillboard('4f04c61c-05c1-41b5-8a89-6846f40ead7f')
+  const billboards = await getBillboards()
   return (
     <Container>
       <div className='space-y-10 pb-10'>
-        <Billboard data={billboard} />
-        <div className='flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8'>
+        {billboards.length > 0 && <Billboard data={billboards[0]} />}
+        <div className='flex flex-col gap-y-8 px-4 pt-2 sm:px-6 lg:px-8'>
           <ProductList title='Featured Products' items={products} />
         </div>
       </div>

@@ -1,16 +1,19 @@
 'use client'
 
-import Button from '@/components/ui/Button'
-import Currency from '@/components/ui/Currency'
-import useCart from '@/hooks/useCart'
 import axios from 'axios'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
+import Button from '@/components/ui/Button'
+import Currency from '@/components/ui/Currency'
+import useCart from '@/hooks/useCart'
+
+import type { Product } from '@/types'
+
 export default function Summary() {
   const searchParams = useSearchParams()
-  const items = useCart((state) => state.items)
+  const items: Product[] = useCart((state) => state.items)
   const removeAll = useCart((state) => state.removeAll)
 
   useEffect(() => {
