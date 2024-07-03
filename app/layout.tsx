@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Urbanist } from 'next/font/google'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import './globals.css'
 import Footer from '@/components/Footer'
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   )
