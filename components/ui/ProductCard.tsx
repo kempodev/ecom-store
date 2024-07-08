@@ -10,6 +10,7 @@ import IconButton from '@/components/ui/IconButton'
 import Currency from '@/components/ui/Currency'
 import usePreviewModal from '@/hooks/usePreviewModal'
 import useCart from '@/hooks/useCart'
+import { Badge } from '@/components/ui/badge'
 
 type ProductCardProps = {
   data: Product
@@ -43,6 +44,15 @@ export default function ProductCard({ data }: ProductCardProps) {
           fill
           className='aspect-square rounded-md object-cover'
         />
+        {data.quantity < 1 && (
+          <Badge
+            variant='destructive'
+            className='absolute left-2 top-2 uppercase'
+          >
+            Sold out
+          </Badge>
+        )}
+
         <div className='absolute bottom-5 w-full px-6 opacity-0 transition group-hover:opacity-100'>
           <div className='flex justify-center gap-x-6'>
             <IconButton
@@ -50,6 +60,7 @@ export default function ProductCard({ data }: ProductCardProps) {
               icon={<Expand size={20} className='text-gray-600' />}
             />
             <IconButton
+              disabled={data.quantity < 1}
               onClick={onAddToCart}
               icon={<ShoppingCart size={20} className='text-gray-600' />}
             />

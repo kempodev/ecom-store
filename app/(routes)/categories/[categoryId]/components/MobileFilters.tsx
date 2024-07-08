@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Plus, X } from 'lucide-react'
 
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 import IconButton from '@/components/ui/IconButton'
 import type { Color, Size } from '@/types'
 import Filter from './Filter'

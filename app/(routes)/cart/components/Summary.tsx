@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 import Currency from '@/components/ui/Currency'
 import useCart from '@/hooks/useCart'
 

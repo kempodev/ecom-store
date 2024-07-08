@@ -17,6 +17,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const suggestedProducts = await getProducts({
     categoryId: product?.category?.id,
   })
+  const filteredProducts = suggestedProducts.filter(
+    (product) => product.quantity > 0
+  )
 
   return (
     <div className='bg-white'>
@@ -29,7 +32,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           </div>
           <hr className='my-10' />
-          <ProductList title='Related Items' items={suggestedProducts} />
+          <ProductList title='Related Items' items={filteredProducts} />
         </div>
       </Container>
     </div>
