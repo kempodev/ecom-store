@@ -18,6 +18,8 @@ export default function CartPage() {
 
   if (!isMounted) return null
 
+  // TODO: implement way to manage quantities in the cart
+
   return (
     <div className='bg-white'>
       <Container>
